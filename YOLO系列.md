@@ -299,7 +299,7 @@ $$
 
 所以提出了CIOU Loss，其在DIOU Loss的基础上增加了一个影响因子，将预测框和目标框的长宽比都考虑进去，公式如下：
 $$
-CIOU \ Loss = 1 - CIOU = 1 - (IOU - \frac{Distance \_ 2^2}{Distance \_C ^2} - \frac{v^2}{(1-IOU)+v}) 
+CIOU \ Loss = 1 - CIOU = 1 - (IOU - \frac{Distance \_ 2^2}{Distance \_C ^2} - \frac{v^2}{(1-IOU)+v})
 $$
 其中，$v$是一个衡量长宽比一致性的参数，我们可以定义为：
 $$
