@@ -19,6 +19,7 @@
 
 * [排序](./排序.md)
 * [python基础](./python数据类型.md)
+* [常见Linux命令](./常见Linux命令.md)
 * [numpy](./代码/numpy.md)
 * [torch](./代码/torch.md)
 * [模型定义](./代码/模型定义.md)
