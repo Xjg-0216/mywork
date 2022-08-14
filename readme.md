@@ -11,7 +11,7 @@
 
 * [火箭军比赛](./火箭军比赛.md)
 
-* SSD
+* [SSD](./SSD.md)
 
 * Mask-RCNN
 
