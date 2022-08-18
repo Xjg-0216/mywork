@@ -41,11 +41,11 @@
 
 ### 6、Python基础
 
-* [排序](./排序.md)
-* [python基础](./python数据类型.md)
-* [常见Linux命令](./常见Linux命令.md)
-* [numpy](./代码/numpy.md)
-* [torch](./代码/torch.md)
+* [排序](./代码/排序.md)
+* [python基础](./代码/python数据类型.md)
+* [常见Linux命令](./代码/常见Linux命令.md)
+* [numpy](./代码/代码/numpy.md)
+* [torch](./代码/代码/torch.md)
 * [模型定义](./代码/模型定义.md)
 * [损失函数](./代码/损失函数.md)
 * [读取存储](./代码/cv2.md)
