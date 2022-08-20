@@ -37,9 +37,11 @@
 
 ### 5、实例分割：
 
-* [Mask RCNN](./实例分割/Mask RCNN.md)
+* [Mask RCNN](./实例分割/MaskRCNN.md)
 
 ### 6、Python基础
+
+* [ACM模式下输入输出](./ACM模式下输入输出.md)
 
 * [排序](./代码/排序.md)
 * [python基础](./代码/python数据类型.md)
@@ -66,3 +68,6 @@
 * [动态规划](./代码/动态规划.md)
 * [单调栈](./代码/单调栈.md)
 
+### 8、Git基础
+
+* [git基础](./git基础/git教程.md)
