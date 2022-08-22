@@ -11,11 +11,11 @@
 
 <!-- MarkdownTOC depth=9 -->
 
-- [1 机器学习基础](#Machine learning)
-- [2 深度学习基础](#Deep learning)
-- [3 目标检测](#Object detection)
-- [4 语义分割](#Semantic segmentation)
-- [5 实例分割](#Instance segmentation)
+- [1 机器学习基础](#Machinelearning)
+- [2 深度学习基础](#Deeplearning)
+- [3 目标检测](#Objectdetection)
+- [4 语义分割](#Semanticsegmentation)
+- [5 实例分割](#Instancesegmentation)
 - [6 python基础](#python)
 - [7 刷题](#leetcode)
 - [8 Git 基础](#Git)
