@@ -9,7 +9,7 @@
 
 # 目录
 
-<!-- MarkdownTOC depth=4 -->
+<!-- MarkdownTOC depth=9 -->
 
 - [1 机器学习基础](#Machine learning)
 - [2 深度学习基础](#Deep learning)
