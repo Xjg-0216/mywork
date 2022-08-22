@@ -25,13 +25,13 @@
 
 
 
-<a name="Machine learning"></a>
+<a name="Machinelearning"></a>
 
 ### 1、机器学习基础
 
 
 
-<a name="Deep learning"></a>
+<a name="Deeplearning"></a>
 
 ### 2、深度学习基础
 
@@ -48,7 +48,7 @@
 * [评价指标](./深度学习基础/评价指标.md)
 * [混合精度训练](./深度学习基础/混合精度训练.md)
 
-<a name="Object detection"></a>
+<a name="Objectdetection"></a>
 
 ### 3、目标检测：
 
@@ -72,13 +72,13 @@
   
   [YOLOX](./目标检测/yolox.md)
 
-<a name="Semantic segmentation"></a>
+<a name="Semanticsegmentation"></a>
 
 ### 4、语义分割：
 
 * [FCN](./语义分割/FCN.md)
 
-<a name="Instance segmentation"></a>
+<a name="Instancesegmentation"></a>
 
 ### 5、实例分割：
 
