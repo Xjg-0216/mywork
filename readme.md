@@ -7,15 +7,31 @@
      \/     \/                                                  \/
 ```
 
+# 目录
+
+<!-- MarkdownTOC depth=4 -->
+
+- [1 机器学习基础](#Machine learning)
+- [2 深度学习基础](#Deep learning)
+- [3 目标检测](#Object detection)
+- [4 语义分割](#Semantic segmentation)
+- [5 实例分割](#Instance segmentation)
+- [6 python基础](#python)
+- [7 刷题](#leetcode)
+- [8 Git 基础](#Git)
+- [9 其他](#other)
 
 
 
+
+
+<a name="Machine learning"></a>
 
 ### 1、机器学习基础
 
 
 
-
+<a name="Deep learning"></a>
 
 ### 2、深度学习基础
 
@@ -32,7 +48,7 @@
 * [评价指标](./深度学习基础/评价指标.md)
 * [混合精度训练](./深度学习基础/混合精度训练.md)
 
-
+<a name="Object detection"></a>
 
 ### 3、目标检测：
 
@@ -56,13 +72,19 @@
   
   [YOLOX](./目标检测/yolox.md)
 
+<a name="Semantic segmentation"></a>
+
 ### 4、语义分割：
 
 * [FCN](./语义分割/FCN.md)
 
+<a name="Instance segmentation"></a>
+
 ### 5、实例分割：
 
 * [Mask RCNN](./实例分割/MaskRCNN.md)
+
+<a name="python"></a>
 
 ### 6、Python基础
 
@@ -76,6 +98,8 @@
 * [模型定义](./代码/模型定义.md)
 * [损失函数](./代码/损失函数.md)
 * [读取存储](./代码/cv2.md)
+
+<a name="leetcode"></a>
 
 ### 7、刷题
 
@@ -93,6 +117,18 @@
 * [动态规划](./代码/动态规划.md)
 * [单调栈 ](./代码/单调栈.md)
 
+<a name="Git"></a>
+
 ### 8、Git基础
 
 * [git基础](./git基础/git教程.md)
+
+<a name="other"></a>
+
+### 9、其他
+
+* 字符画
+  * [文字转字符画](http://patorjk.com/software/taag/)
+  * [图片转字符画](http://www.degraeve.com/img2txt.php)
+* [markdown常用数字符号](https://www.jianshu.com/p/86d4e3502e46)
+
