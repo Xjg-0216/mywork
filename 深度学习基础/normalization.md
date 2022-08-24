@@ -3,7 +3,7 @@
 **主要且常用**的归一化操作有**BN，LN，IN，GN**，示意图如图所示。
 
 
-![](normalization/7842ce3e-a60f-4c37-b520-98851537f16d.png)
+![](../img/7842ce3e-a60f-4c37-b520-98851537f16d.png)
 
 
 图中的蓝色部分，表示需要归一化的部分。其中两维$C$和$N$分别表示$channel$和$batch$  $size$，第三维表示$H$,$W$，可以理解为该维度大小是$H*W$，也就是拉长成一维，这样总体就可以用三维图形来表示。可以看出$BN$的计算和$batch$  $size$相关（蓝色区域为计算均值和方差的单元），而$LN$、$BN$和$GN$的计算和$batch$ $size$无关。同时$LN$和$IN$都可以看作是$GN$的特殊情况（$LN$是$group$=1时候的$GN$，$IN$是$group=C$时候的$GN$）。
@@ -18,7 +18,7 @@
 
 - 沿着通道计算每个$batch$的方差$\delta^{2}=\frac{1}{m} \sum_{i=1}^{m}\left(x_{i}-\mu_{\mathcal{B}}\right)^{2}$。
 
-- 对x做归一化, ![image](normalization/118058914-dd6e8580-b3c1-11eb-8f27-8107dba60cae.png)
+- 对x做归一化, ![image](../img/118058914-dd6e8580-b3c1-11eb-8f27-8107dba60cae.png)
 
 
 - 加入缩放和平移变量$\gamma$和$\beta$ ,归一化后的值，$y_{i} \leftarrow \gamma \widehat{x}_{i}+\beta$
@@ -82,12 +82,12 @@ def batchnorm_forward(x, gamma, beta, bn_param):
 
 
 
-![image](normalization/118059082-39d1a500-b3c2-11eb-80f8-75f2bf677451.png)
+![image](../img/118059082-39d1a500-b3c2-11eb-80f8-75f2bf677451.png)
 
 
   下面来一个背诵版本：
 
-![image](normalization/118059220-9208a700-b3c2-11eb-841f-73781fa93342.png)
+![image](../img/118059220-9208a700-b3c2-11eb-841f-73781fa93342.png)
 
 
 
@@ -134,3 +134,56 @@ def batchnorm_backward(dout, cache):
 - 防止过拟合
 
   在网络的训练中，BN的使用使得一个$minibatch$中所有样本都被关联在了一起，因此网络不会从某一个训练样本中生成确定的结果，即同样一个样本的输出不再仅仅取决于样本的本身，也取决于跟这个样本同属一个$batch$的其他样本，而每次网络都是随机取$batch$，比较多样，可以在一定程度上避免了过拟合。
+
+### Instance Normalization
+
+IN适用于生成模型中，比如图片风格迁移。因为图片生成的结果主要依赖于某个图像实例， 所以对整个batch归一化不适合图像风格化中， 在风格迁移中使用$Instance Normalization$。不仅可以加速模型收敛， 并且可以保持每个图像实例之间的独立。
+
+```python
+def Instancenorm(x, gamma, beta):
+    results = 0.
+    eps = 1e-5
+    x_mean = np.mean(x, axis=(2,3), keepdims = True)
+    x_var = np.var(x, axis=(2, 3), keepdims = True)
+    x_normalized = (x - x_mean) / np.sqrt(x_var + eps)
+    results = gamma * x_normalized + beta
+    return results
+```
+
+
+
+### Layer Normalization
+
+$LN$是指对同一张图片的同一层的所有通道进行$Normalization$操作， 与上面的计算方式相似， 计算均值与方差， 在计算缩放和平移变量$\gamma$和$\beta$， $LN$主要用在NLP任务中
+
+```python
+def Layernorm(x, gamma, beta):
+    results = 0.
+    eps = 1e-5
+    x_mean = np.mean(x, axis=(1, 2, 3), keepdims = True)
+    x_var = np.var(x, axis = (1, 2, 3), keepdims = True)
+    x_normalized = (x - x_mean) / np.sqrt(x_var + eps)
+    result = gamma * x_normalized + beta
+    return results
+```
+
+### Group Normalization
+
+$Group Normalization$是针对$Batch Normalization$在$batch size$较小时错误率较高而提出的改进算法， 因为$BN$层的计算结果依赖于当前batch数据， 当$batch size$较小时， 该$batch $数据的均值和方差的代表性较差， 因此对最后的结果影响也较大。
+
+其中$GN$是将通道数$C$分成$G$份， 每份$C//G$， 当$G=1$时， 每份$G$个， 所以为一整块的$C$， 即为$LN$， 当$G=C$时， 每份只有$1$个， 所以为$IN$。
+
+$GN$是指对同一张图片的同一层的某几个通道一起进行$Normalization$操作。这几个通道称为一个$Group$。计算相应的均值以及方差， 计算缩放和平移变量$\gamma$和$\beta$
+
+```python
+def GroupNorm(x, gamma, beta, G=16):
+    results = 0.
+    eps = 1e-5
+    x = np.reshape(x, (x.shape[0], G, x.shape[1]/16, x.shape[2], x.shape[3]))
+    x_mean = np.mean(x. axis = (2, 3, 4), keepdims = True)
+    x_var = np.var(x, axis = (2, 3, 4), keepdims=True)
+    x_normalized = (x - x_mean) / np.sqrt(x_var + eps)
+    results = gamma * x_normalized + beta
+    return results
+```
+
