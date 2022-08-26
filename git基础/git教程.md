@@ -4,9 +4,9 @@
 
 ![image-20220412183643545](https://gitee.com/xjg0216/blogimg/raw/master/img/image-20220412183643545.png)
 
-创建demo文件夹
+创建`demo`文件夹
 
-进入到demo文件夹，把该文件夹变成git可管理的仓库（单击右键，选择git bush--->>> git init)
+进入到`demo`文件夹，把该文件夹变成`git`可管理的仓库（单击右键，选择`git bush--->>> git init`)
 
 ![image-20220412183945509](https://gitee.com/xjg0216/blogimg/raw/master/img/image-20220412183945509.png)
 
@@ -14,18 +14,18 @@
 
 将文件添加到缓存区
 
-* 通过git add . 可以将该文件夹下所有的文件添加到缓存区
-* 通过git add filename， 可以将具体的文件添加到缓存区
+* 通过`git add .` 可以将该文件夹下所有的文件添加到缓存区
+* 通过`git add filename`， 可以将具体的文件添加到缓存区
 
 ![image-20220412184305946](https://gitee.com/xjg0216/blogimg/raw/master/img/image-20220412184305946.png)
 
-我们将git教程.md文件添加到缓存区
+我们将`git``教程.md`文件添加到缓存区
 
-通过git status查看缓存区状态
+通过`git status`查看缓存区状态
 
 ![image-20220412184420425](https://gitee.com/xjg0216/blogimg/raw/master/img/image-20220412184420425.png)
 
-为缓存区文件添加注释(git commit -m "context")
+为缓存区文件添加注释(`git commit -m "context"`)
 
 ![image-20220412184551434](https://gitee.com/xjg0216/blogimg/raw/master/img/image-20220412184551434.png)
 
@@ -41,11 +41,11 @@
 
 ### 3、上传内容
 
-git push origin master
+`git push origin master`
 
 ![image-20220412190606498](https://gitee.com/xjg0216/blogimg/raw/master/img/image-20220412190606498.png)
 
-这是由于你新创建的那个仓库里面的README文件不在本地仓库目录中，这时我们可以通过以下命令先将内容合并以下：
+这是由于你新创建的那个仓库里面的`README`文件不在本地仓库目录中，这时我们可以通过以下命令先将内容合并以下：
 
-git pull --rebase origin master
+`git pull --rebase origin master`
 
