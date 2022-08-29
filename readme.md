@@ -12,14 +12,16 @@
 <!-- MarkdownTOC depth=9 -->
 
 - [1 机器学习基础](#Machinelearning)
-- [2 深度学习基础](#Deeplearning)
-- [3 目标检测](#Objectdetection)
-- [4 语义分割](#Semanticsegmentation)
-- [5 实例分割](#Instancesegmentation)
-- [6 python基础](#python)
-- [7 刷题](#leetcode)
-- [8 Git 基础](#Git)
-- [9 其他](#other)
+- [2 传统CV](#CV)
+- [3 深度学习基础](#Deeplearning)
+- [4 目标检测](#Objectdetection)
+- [5 语义分割](#Semanticsegmentation)
+- [6 实例分割](#Instancesegmentation)
+- [7 ViT](#vit)
+- [8 python基础](#python)
+- [9 刷题](#leetcode)
+- [10 Git 基础](#Git)
+- [11 其他](#other)
 
 
 
@@ -28,18 +30,49 @@
 ### 1、机器学习基础
 
 * [概率论](./机器学习基础/概率论.md)
-* [线性回归]()
-* [逻辑回归]()
-* [贝叶斯分类器]()
-* [线性判别分析(LDA)]()
-* [支持向量机(SVM)]()
-* [聚类]()
-* [降维]()
-* [集成学习]()
+
+* [线性回归](./机器学习基础/线性回归.md)
+
+* [逻辑回归](./机器学习基础/逻辑回归.md)
+
+* [贝叶斯分类器](./机器学习基础/贝叶斯分类器.md)
+
+* [线性判别分析(LDA)](./机器学习基础/lda.md)
+
+* [支持向量机(SVM)](./机器学习基础/svm.md)
+
+* [聚类](./机器学习基础/聚类.md)
+
+* [KNN](./机器学习基础/knn.md)
+
+* [决策树](./机器学习基础/决策树.md)
+
+  
+
+
+
+<a name="CV"></a>
+
+### 2、传统CV：
+
+* [harris角点](./传统CV/harris角点.md)
+* [canny算子](./传统CV/canny算子.md)
+* [sobel算子]()
+* [直方图均衡化](./传统CV/直方图均衡化.md)
+* [仿射变换]()
+* [霍夫变换]()
+* [颜色空间]()
+* [sift]()
+* [HOG]()
+* [SURF]()
+* [滤波器]()
+* 
+
+
 
 <a name="Deeplearning"></a>
 
-### 2、深度学习基础
+### 3、深度学习基础
 
 * [上采样的方式](./深度学习基础/上采样的方式.md)
 * [常见的卷积](./深度学习基础/常见的卷积.md)
@@ -56,9 +89,11 @@
 * [多进程多线程]()
 * 
 
+
+
 <a name="Objectdetection"></a>
 
-### 3、目标检测：
+### 4、目标检测：
 
 * [YOLO系列总结](./目标检测/YOLO系列.md)
 
@@ -82,19 +117,33 @@
 
 <a name="Semanticsegmentation"></a>
 
-### 4、语义分割：
+### 5、语义分割：
 
 * [FCN](./语义分割/FCN.md)
 
 <a name="Instancesegmentation"></a>
 
-### 5、实例分割：
+### 6、实例分割：
 
 * [Mask RCNN](./实例分割/MaskRCNN.md)
 
+
+
+
+
+<a name="vit"></a>
+
+### 7、ViT
+
+* [transformer](./ViT/transformer.md)
+* [Vision transformer](./ViT/ViT.md)
+* [Swin-transformer]()
+
+
+
 <a name="python"></a>
 
-### 6、Python基础
+### 8、Python基础
 
 * [ACM模式下输入输出](./ACM模式下输入输出.md)
 
@@ -109,7 +158,7 @@
 
 <a name="leetcode"></a>
 
-### 7、刷题
+### 9、刷题
 
 * [链表构造](./代码/链表输入.md)
 * [二叉树构造](./代码/二叉树输入.md)
@@ -127,13 +176,13 @@
 
 <a name="Git"></a>
 
-### 8、Git基础
+### 10、Git基础
 
 * [git基础](./git基础/git教程.md)
 
 <a name="other"></a>
 
-### 9、其他
+### 11、其他
 
 * 字符画
   * [文字转字符画](http://patorjk.com/software/taag/)
