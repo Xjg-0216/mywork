@@ -115,6 +115,9 @@
   
   [YOLOX](./目标检测/yolox.md)
 
+* [mosaic数据增强](./目标检测/mosaic数据增强.md)
+* [目标检测损失函数](./目标检测/目标检测损失函数.md)
+
 <a name="Semanticsegmentation"></a>
 
 ### 5、语义分割：
