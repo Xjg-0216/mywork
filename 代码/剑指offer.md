@@ -362,4 +362,502 @@ class Solution:
         return dummy.next
 ```
 
-#### 
+#### 17、调整数组顺序使奇数位于偶数前面
+
+[剑指 Offer 21. 调整数组顺序使奇数位于偶数前面 - 力扣（LeetCode）](https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/)
+
+```python
+class Solution:
+    def exchange(self, nums):
+        left = []
+        right = []
+        for i in range(len(nums)):
+            if nums[i] % 2 != 0:
+                left.append(nums[i])
+            else:
+                right.append(nums[i])
+        return left + right
+```
+
+#### 18、 链表中倒数第K个节点
+
+[剑指 Offer 22. 链表中倒数第k个节点 - 力扣（LeetCode）](https://leetcode.cn/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/?favorite=xb9nqhhg)
+
+输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。
+
+```python
+class Solution:
+    def getKthFromEnd(self, head, k):
+        fast, slow = head, head
+        while k:
+            fast = fast.next
+            k -= 1
+        while fast:
+            fast = fast.next
+            slow = slow.next
+        return slow
+```
+
+#### 19、反转链表
+
+[剑指 Offer 24. 反转链表 - 力扣（LeetCode）](https://leetcode.cn/problems/fan-zhuan-lian-biao-lcof/)
+
+定义一个函数，输入一个链表的头节点，反转该链表并输出反转后链表的头节点。
+
+```python
+class Solution:
+    def reverseList(self, head):
+        pre = None
+        cur = head
+        while cur:
+            post = cur.next
+            cur.next = pre
+            pre = cur
+            cur = post
+        return pre
+```
+
+#### 20、合并两个排序的链表
+
+[剑指 Offer 25. 合并两个排序的链表 - 力扣（LeetCode）](https://leetcode.cn/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/?favorite=xb9nqhhg)
+
+输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然是递增排序的。
+
+```python
+class Solution:
+    def mergeTwoLists(self, l1, l2):
+        dummy = ListNode(0)
+        cur = dummy
+        while l1 and l2:
+            if l1.val < l2.val:
+                cur.next = ListNode(l1.val)
+                l1 = l1.next
+            else:
+                cur.next = ListNode(l2.val)
+                l2 = l2.next
+            cur = cur.next
+        if not l1 and l2:
+            cur.next = l2
+        elif not l2 and l1:
+            cur.next = l1
+        return dummy.next
+```
+
+#### 21、树的子结构
+
+[剑指 Offer 26. 树的子结构 - 力扣（LeetCode）](https://leetcode.cn/problems/shu-de-zi-jie-gou-lcof/?favorite=xb9nqhhg)
+
+输入两棵二叉树A和B，判断B是不是A的子结构。(约定空树不是任意一个树的子结构)
+
+B是A的子结构， 即 A中有出现和B相同的结构和节点值。
+
+```python
+class Solution:
+    def isSubStructure(self, A, B):
+        if not A or not B:
+            return False
+        que = collections.deque()
+        que.append(A)
+        while que:
+            size = len(que)
+            for _ in range(size):
+                node = que.popleft()
+                if self.recur(node, B):
+                    return True
+                if node.left:
+                    que.append(node.left)
+                if node.right:
+                    que.append(node.right)
+         return False
+     def recur(self, A, B):
+            if not B:
+                return True
+            if not A:
+                return False
+            if A.val == B.val:
+                return self.recur(A.left, B.left) and self.recur(A.right, B.right)
+            else:
+                return False
+```
+
+#### 22、二叉树的镜像
+
+[剑指 Offer 27. 二叉树的镜像 - 力扣（LeetCode）](https://leetcode.cn/problems/er-cha-shu-de-jing-xiang-lcof/)
+
+请完成一个函数，输入一个二叉树，该函数输出它的镜像。
+
+```python
+class Solution:
+    def mirrorTree(self, root):
+        if not root:
+            return root
+        que = collections.deque()
+        cur = root
+        que.append(cur)
+        while que:
+            size = len(que)
+            for _ in range(size):
+                node = que.popleft()
+                if node.left or node.right:
+                    node.left, node.right = node.right, node.left
+                	if node.left:
+                        que.append(node.left)
+                    if node.right:
+                        que.append(node.right)
+         return root
+```
+
+#### 23、对称的二叉树
+
+[剑指 Offer 28. 对称的二叉树 - 力扣（LeetCode）](https://leetcode.cn/problems/dui-cheng-de-er-cha-shu-lcof/)
+
+请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。
+
+```python
+class Solution:
+    def isSymmetric(self, root):
+        if not root:
+            return True
+        return self.recur(root.left, root.right)
+    def recur(self, A, B):
+        if not A and not B:
+            return True
+        if not A or not B or A.val != B.val:
+            return False
+        return self.recur(A.left, B.right) and self.recur(A.right, B.left)
+```
+
+#### 24、顺时针打印矩阵
+
+[剑指 Offer 29. 顺时针打印矩阵 - 力扣（LeetCode）](https://leetcode.cn/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/?favorite=xb9nqhhg)
+
+输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字。
+
+```python
+class Solution:
+    def spiralOrder(self, matrix):
+        result = []
+        if not matrix:
+            return result
+        l, r, t, b = 0, len(matrix[0])-1, 0, len(matrix)-1
+        while True:
+            for i in range(l, r+1):
+                result.append(matrix[t][i])
+            t += 1
+            if t > b:
+                break
+            for j in range(t, b+1):
+                result.append(matrix[j][r])
+            r -= 1
+            if r < l:
+                break
+            for i in range(r, l-1, -1):
+                result.append(matrix[b][i])
+            b -= 1
+            if b < t:
+                break
+            for j in range(b, t-1, -1):
+                result.append(matrix[j][l])
+            l += 1
+            if l < r:
+                break
+        return result
+```
+
+#### 25、包含min函数的栈
+
+[剑指 Offer 30. 包含min函数的栈 - 力扣（LeetCode）](https://leetcode.cn/problems/bao-han-minhan-shu-de-zhan-lcof/?favorite=xb9nqhhg)
+
+定义栈的数据结构，请在该类型中实现一个能够得到栈的最小元素的 min函数在该栈中，调用 min、push 及 pop 的时间复杂度都是 O(1)。
+
+```python
+class Solution:
+    def __init__(self):
+        self.stack1 = []
+        self.stack2 = []
+    def push(self, x):
+        self.stack1.append(x)
+        if not self.stack2 or self.stack2[-1] >= x:
+            self.stack2.append(x)
+    def pop(self):
+        x = self.stack1.pop()
+        if x == self.stack2[-1]:
+            self.stack2.pop()
+    def top(self):
+        return self.stack1[-1]
+    def min(self):
+        return self.stack2[-1]
+```
+
+#### 26、栈的压入、弹出序列
+
+[剑指 Offer 31. 栈的压入、弹出序列 - 力扣（LeetCode）](https://leetcode.cn/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/?favorite=xb9nqhhg)
+
+输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如，序列{1,2,3,4,5} 是某栈的压栈序列，序列 {4,5,3,2,1} 是该压栈序列对应的一个弹出序列，但 {4,3,5,1,2} 就不可能是该压栈序列的弹出序列。
+
+```python
+class Solution:
+    def validateStackSequence(self, pushed, popped):
+        stack = []
+        i = 0
+        for num in pushed:
+            stack.append(num)
+            while stack and stack[-1] == popped[i]:
+                stack.pop()
+                i += 1
+        return len(stack) == 0
+```
+
+#### 27、从上到下打印二叉树
+
+[剑指 Offer 32 - I. 从上到下打印二叉树 - 力扣（LeetCode）](https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/?favorite=xb9nqhhg)
+
+从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。
+
+```python
+class Solution:
+    def levelorder(self, root):
+        res = []
+        if not root:
+            return res
+        que = collections.deuqe()
+        que.append(root)
+        while que:
+            size = len(que)
+            for _ in range(size):
+                node = que.popleft()
+                res.append(node.val)
+                if node.left:
+                    que.append(node.left)
+                if node.right:
+                    que.append(node.right)
+         return res       
+```
+
+#### 28、从上到下打印二叉树II
+
+[剑指 Offer 32 - II. 从上到下打印二叉树 II - 力扣（LeetCode）](https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof/?favorite=xb9nqhhg)
+
+从上到下按层打印二叉树，同一层的节点按从左到右的顺序打印，每一层打印到一行。
+
+```python
+class Solution:
+    def levelOrder(self, root):
+        res = []
+        if not root:
+            return res
+        que = collections.deque()
+        que.append(root)
+        while que:
+            size = len(que)
+            tmp = []
+            for _ in range(size):
+                node = que.popleft()
+                tmp.append(node.val)
+                if node.left:
+                    que.append(node.left)
+                if node.right:
+                    que.append(node.right)
+            res.append(tmp)
+        return res        
+```
+
+#### 29、从上到下打印二叉树III
+
+[剑指 Offer 32 - III. 从上到下打印二叉树 III - 力扣（LeetCode）](https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/?favorite=xb9nqhhg)
+
+请实现一个函数按照之字形顺序打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右到左的顺序打印，第三行再按照从左到右的顺序打印，其他行以此类推。
+
+```python
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        res = []
+        if not root:
+            return res
+        que = collections.deque()
+        que.append(root)
+        b = 0
+        while que:
+            size = len(que)
+            tmp = []
+            for _ in range(size):
+                node = que.popleft()
+                tmp.append(node.val)
+                if node.left:
+                    que.append(node.left)
+                if node.right:
+                    que.append(node.right)
+            if b % 2 != 0 : tmp = tmp[::-1]
+            res.append(tmp)
+            b += 1
+        return res
+```
+
+#### 30、二叉搜索树的后序遍历序列
+
+[剑指 Offer 33. 二叉搜索树的后序遍历序列 - 力扣（LeetCode）](https://leetcode.cn/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/?favorite=xb9nqhhg)
+
+输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历结果。如果是则返回 `true`，否则返回 `false`。假设输入的数组的任意两个数字都互不相同。
+
+```python
+class Solution:
+    def verifyPostorder(self, postorder):
+        def recur(i, j):
+            if i >= j:
+                return True
+            p = i
+            while postorder[p] < postorder[j]:
+                p += 1
+            m = p
+            while postorder[p] > postorder[j]:
+                p += 1
+            return p == j and recur(i, m-1) and recur(m, j-1)
+        return recur(0, len(postorder)-1)       
+```
+
+#### 31、二叉树中和为某一值的路径
+
+[剑指 Offer 34. 二叉树中和为某一值的路径 - 力扣（LeetCode）](https://leetcode.cn/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof/?favorite=xb9nqhhg)
+
+给你二叉树的根节点 `root` 和一个整数目标和 `targetSum` ，找出所有 **从**
+
+```python
+class Solution:
+    def pathSum(self, root, target):
+        def traversal(root, tmp, target, result):
+            tmp.append(root.val)
+            if not root.left and not root.right:
+                if sum(tmp) == target:
+                    result.append(tmp[:])
+                return 
+            if root.left:
+                traversal(root.left, tmp, target, result)
+                tmp.pop()
+            if root.right:
+                traversal(root.right, tmp, target, result)
+                tmp.pop()
+            result = []
+            if not root:
+                return result
+            traversal(root, [], target, result)
+            return result
+```
+
+#### 32、复杂链表的赋值
+
+[剑指 Offer 35. 复杂链表的复制 - 力扣（LeetCode）](https://leetcode.cn/problems/fu-za-lian-biao-de-fu-zhi-lcof/)
+
+请实现 `copyRandomList` 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 `next` 指针指向下一个节点，还有一个 `random` 指针指向链表中的任意节点或者 `null`。
+
+```python
+class Solution:
+    def copyRandomList(self, head):
+        if not head:
+            return head
+        dict = {}
+        cur = head
+        while cur:
+            dict[cur] = Node(cur.val)
+            cur = cur.next
+        cur = head
+        while cur:
+            dict[cur].next = dict.get(cur.next)
+            dict[cur].random = dict.get(cur.random)
+            cur = cur.next
+        return dict[head]
+```
+
+#### 33、二叉搜索树与双向链表
+
+[剑指 Offer 36. 二叉搜索树与双向链表 - 力扣（LeetCode）](https://leetcode.cn/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/?favorite=xb9nqhhg)
+
+输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的循环双向链表。要求不能创建任何新的节点，只能调整树中节点指针的指向。
+
+```python
+class Solution:
+    def treeToDoublyList(self, root):
+        def traversal(root):
+            if not root:
+                return
+            traversal(root.left)
+            if self.pre:
+                self.pre.right, root.left = root, self.pre
+            else:
+                self.head = root
+            self.pre = root
+            traversal(root.right)
+        if not root:
+            return
+        self.pre = None
+        traversal(root)
+        self.pre.right, self.head.left = self.head, self.pre
+        return self.head
+```
+
+#### 34、字符串的排列
+
+[剑指 Offer 38. 字符串的排列 - 力扣（LeetCode）](https://leetcode.cn/problems/zi-fu-chuan-de-pai-lie-lcof/?favorite=xb9nqhhg)
+
+输入一个字符串，打印出该字符串中字符的所有排列。你可以以任意顺序返回这个字符串数组，但里面不能有重复元素。
+
+```python
+class Solutiom:
+    def __init__(self):
+        self.path = []
+        self.result = []
+    def backtracking(self, nums, used):
+        if len(self.path) == len(nums):
+            self.result.append("".join(self.path))
+            return 
+        for i in range(len(nums)):
+            if used[i] or (i > 0 and nums[i] == nums[i-1] and not used[i-1]):
+                continue
+            used[i] = True
+            self.path.append(nums[i])
+            self.backtracking(nums, used)
+            self.path.pop()
+            used[i] = False
+     def permutation(self, s):
+        s = list(s)
+        s.sort()
+        used = [False] * len(s)
+        self.backtracking(s, used)
+        return self.result
+```
+
+#### 35、数组中出现次数超过一半的数字
+
+[剑指 Offer 39. 数组中出现次数超过一半的数字 - 力扣（LeetCode）](https://leetcode.cn/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof/?favorite=xb9nqhhg)
+
+数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。你可以假设数组是非空的，并且给定的数组总是存在多数元素。
+
+```python
+class Solution:
+    def majorityElement(self, nums):
+        n = len(nums)
+        dict = collections.defaultdict(int)
+        for i in range(n):
+            dict[nums[i]] += 1
+            if dict[nums[i]] > n // 2:
+                return nums[i]
+```
+
+#### 36、最小的k个数
+
+[剑指 Offer 40. 最小的k个数 - 力扣（LeetCode）](https://leetcode.cn/problems/zui-xiao-de-kge-shu-lcof/)
+
+输入整数数组 `arr` ，找出其中最小的 `k` 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、3、4。
+
+```python
+class Solution:
+    def quickSort(self, nums):
+        if not nums:
+            return []
+        a = nums[0]
+        list_left = self.quickSort([i for i in nums[1:] if i < a])
+        list_right = self.quickSort([i for i in nums[1:] if i >= a])
+        return list_left + [a] + list_right
+    def getLeastNumber(self, arr, k):
+        return self.quickSort(arr)[:k]
+```
+
