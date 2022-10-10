@@ -1,4 +1,4 @@
-### RetinaNet  ** （Fcoal loss for Dense Object Detection）
+### RetinaNet  （Fcoal loss for Dense Object Detection）
 
 **单阶段目标检测网络**
 
